@@ -1,0 +1,75 @@
+.cart-page {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 80px);
+    width: 100vw;
+    padding: 26px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cart-items {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    padding: 12px;
+}
+
+.individual-item {
+    max-width: 900px;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    border: 1px #000000 solid;
+    border-radius: 5px;
+    width: 100%;
+    padding: 12px;
+}
+
+.book-cover-cart {
+    height: 250px;
+    
+}
+
+.bookname-author {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.remove-from-cart {
+    color: #f0f8ff;
+    font-weight:normal;
+    height: 50px;
+    background-color: #f52e2e;
+}
+
+.remove-from-cart:hover {
+    background-color: #cf3f3f;
+}
+
+.Checkout-btn {
+    font-size: 18px;
+    color:#f0f8ff;
+    font-weight:normal;
+    background-color: #2a7cbe;
+    height: 60px;
+    width: 100%;
+}
+
+.Checkout-btn:hover {
+    background-color: #106bb4;
+}
+
+@media (min-width: 300px) and (max-width: 750px) {
+    .book-cover-cart {
+        height: 500px;
+    }
+    .individual-item {
+        flex-direction: column;
+        max-width: 360px;
+    }
+}

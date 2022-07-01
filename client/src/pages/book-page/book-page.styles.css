@@ -1,0 +1,70 @@
+.book-page {
+    min-height: calc(100vh - 80px);
+    width: 100vw;
+    margin-bottom: 16px;
+}
+
+.book-form {
+    flex-direction:column;
+    justify-content: center;
+    
+    overflow: hidden;
+}
+
+.book-cover-book-page {
+    margin-top: 30px;
+    margin-left: 30px;   
+    float: left;
+    width: 350px;
+    height: 550px;
+}
+
+.text-form {
+    display: block;
+    padding-left: 400px;
+
+}
+
+.book-name{
+    margin-top: 30px;
+    margin-bottom: 6px;
+    font-size:  40px;;
+}
+
+.book-author, .pages-number, .book-price {
+    margin-top: 0;
+    margin-bottom: 6px;
+    font-size: 16px;
+}
+
+.book-description {
+    margin-top: 12px;
+    font-size: 20px;
+}
+
+.add-to-cart {
+    background-color: rgb(77, 114, 228);
+    color: aliceblue;
+    margin-top: 6px;
+}
+
+.add-to-cart:hover {
+    background-color: rgb(50, 94, 228);
+}
+
+@media (min-width: 300px) and (max-width: 750px) {
+    .book-cover-book-page {
+        margin: auto;
+        margin-top: 16px;
+        display: block;
+        float: none;
+    }
+
+    .text-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 15px 0 15px;
+        padding: 0;
+    }
+}
