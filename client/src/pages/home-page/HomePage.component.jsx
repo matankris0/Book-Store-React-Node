@@ -1,14 +1,15 @@
-import React, { useReducer, useState, useEffect, useContext } from "react";
-import { Link } from 'react-router-dom'
+import React, { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 
-import homePageReducer, { LOGIN_FORM_INITIAL_STATE } from "../../reducers/homePage.reducer";
-import './home-page.styles.css'
+import './home-page.styles.css';
 import Loader from "../../components/shared/loader/Loader.component";
 
 const HomePage = () => {
+    const navigate = useNavigate();
+
     const [isLoading, setIsLoading] = useState(true);
 
-    const [homePageState, dispatchHomePageState] = useReducer(homePageReducer, LOGIN_FORM_INITIAL_STATE)
+    const [books, setBooks] = useState([]);
 
     useEffect(() => {
         const getBooks = async () => {
@@ -20,16 +21,17 @@ const HomePage = () => {
                 }
 
                 const responseData = await response.json();
-                const books = responseData.data.books
+                const books = responseData.data.books;
                 console.log(books)
 
-                dispatchHomePageState()
+                setBooks(books)
+
             }
 
             catch (err) {
-                alert('Something went wrong')    
-            }
-        }
+                alert('Something went wrong')
+            };
+        };
 
         setTimeout(() => {
             setIsLoading(false);
@@ -40,60 +42,21 @@ const HomePage = () => {
 
     return isLoading ? (
         <Loader />
-    ) : (<main className="homepage">
-            <div className="books">
-            <Link to={'/book'} className='book-link'>
-                <div className="individual-book">
-                <img className="book-cover-homepage" src="https://m.media-amazon.com/images/I/41e+bOAeE-L.jpg" alt="The Maid" />
-                <h3 className="book-name-homepage">The Maid</h3>
+    ) : (
+        <main className="homepage">
+                <div className="books">
+                        {books.map((book) => (
+                            <div className="individual-book" >
+                                <img className="book-cover-homepage" src={book.bookCover} alt={book.title}/>
 
-                <h4 className="book-author-homepage">By Nita Prose</h4>
-                </div>
-                </Link>
-                <div className="individual-book">
-                <img className="book-cover-homepage" src="https://m.media-amazon.com/images/I/41e+bOAeE-L.jpg" alt="The Maid" />
+                                <h3 className="book-name-homepage">{book.title}</h3>
 
-                <h3 className="book-name-homepage">The Maid</h3>
-                <h4 className="book-author-homepage">By Nita Prose</h4>
-                </div>
+                                <h4 className="book-author-homepage">{book.author}</h4>
+                        </div>
+                    ))}
+        </div>
+    </main>
+    );
+};
 
-                <div className="individual-book">
-                <img className="book-cover-homepage" src="https://m.media-amazon.com/images/I/41e+bOAeE-L.jpg" alt="The Maid" />
-                <h3 className="book-name-homepage">The Maid</h3>
-
-                <h4 className="book-author-homepage">By Nita Prose</h4>
-                </div>
-
-                <div className="individual-book">
-                <img className="book-cover-homepage" src="https://m.media-amazon.com/images/I/41e+bOAeE-L.jpg" alt="The Maid" />
-                <h3 className="book-name-homepage">The Maid</h3>
-
-                <h4 className="book-author-homepage">By Nita Prose</h4>
-                </div>
-
-                <div className="individual-book">
-                <img className="book-cover-homepage" src="https://m.media-amazon.com/images/I/41e+bOAeE-L.jpg" alt="The Maid" />
-                <h3 className="book-name-homepage">The Maid</h3>
-
-                <h4 className="book-author-homepage">By Nita Prose</h4>
-                </div>
-
-                <div className="individual-book">
-                <img className="book-cover-homepage" src="https://m.media-amazon.com/images/I/41e+bOAeE-L.jpg" alt="The Maid" />
-                <h3 className="book-name-homepage">The Maid</h3>
-
-                <h4 className="book-author-homepage">By Nita Prose</h4>
-                </div>
-
-                <div className="individual-book">
-                <img className="book-cover-homepage" src="https://m.media-amazon.com/images/I/41e+bOAeE-L.jpg" alt="The Maid" />
-                <h3 className="book-name-homepage">The Maid</h3>
-
-                <h4 className="book-author-homepage">By Nita Prose</h4>
-                </div>
-            </div>
-        </main>
-    )
-}
-
-export default HomePage
+export default HomePage;

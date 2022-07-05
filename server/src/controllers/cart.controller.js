@@ -63,16 +63,17 @@ export const addToCart = async (req, res) => {
         const books = cart.books;
         if (!books.find((book) => book.bookID.toString() === bookID)) {
             cart.books.unshift({ bookID: bookID });
-
             await cart.save();
         }
 
         res.status(201).send({
-            status: 200,
+            status: 201,
             statusText: 'Created',
             data: { cart: cart },
             message: 'Item added to cart successfully'
         });
+
+        
     }
     catch (err) {
         console.log(err)

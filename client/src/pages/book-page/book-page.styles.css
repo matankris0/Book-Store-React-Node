@@ -38,6 +38,7 @@
 }
 
 .book-description {
+    max-width: 780px;
     margin-top: 12px;
     font-size: 20px;
 }
@@ -53,6 +54,10 @@
 }
 
 @media (min-width: 300px) and (max-width: 750px) {
+    .book-name {
+            text-align: center;
+    }
+    
     .book-cover-book-page {
         margin: auto;
         margin-top: 16px;

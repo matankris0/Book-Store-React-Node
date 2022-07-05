@@ -31,7 +31,7 @@ export const getBookById = async (req, res) => {
         res.status(200).send({
             status: 200,
             statusText: 'OK',
-            data: bookById,
+            data: { bookById: bookById },
             message: ''
         })
     }
